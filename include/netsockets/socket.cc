@@ -1,4 +1,4 @@
-#include "socket.hh"
+#include <netsockets/socket.hh>
 
 namespace netsockets {
 

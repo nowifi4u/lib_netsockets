@@ -1,7 +1,7 @@
 #ifndef LIB_NETSOCKET_HTTP_H
 #define LIB_NETSOCKET_HTTP_H
 #include <string>
-#include "socket.hh"
+#include <netsockets/socket.hh>
 
 namespace netsockets {
 

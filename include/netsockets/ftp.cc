@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "assert.h"
-#include "socket.hh"
-#include "ftp.hh"
+#include <netsockets/socket.hh>
+#include <netsockets/ftp.hh>
 
 namespace netsockets {
 

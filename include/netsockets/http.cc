@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "assert.h"
-#include "socket.hh"
-#include "http.hh"
+#include <netsockets/socket.hh>
+#include <netsockets/http.hh>
 
 namespace netsockets {
 

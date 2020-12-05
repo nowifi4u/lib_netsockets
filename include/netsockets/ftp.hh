@@ -2,7 +2,7 @@
 #define LIB_NETSOCKET_FTP_H
 #include <string>
 #include <vector>
-#include "socket.hh"
+#include <netsockets/socket.hh>
 
 namespace netsockets {
 
