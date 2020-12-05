@@ -149,6 +149,11 @@ int socket_t::write_all(const void* _buf, int size_buf)
   return 1;
 }
 
+int socket_t::write_all(const std::string& str)
+{
+  return write_all(str.c_str(), str.length());
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //socket_t::read_all
 //read SIZE_BUF bytes of data from m_sockfd into buffer BUF 

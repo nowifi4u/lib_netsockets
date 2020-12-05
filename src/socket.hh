@@ -56,6 +56,7 @@ public:
   socket_t(socketfd_t sockfd, sockaddr_in sock_addr);
   void close();
   int write_all(const void* buf, int size_buf);
+  int write_all(const std::string& str);
   int read_all(void* buf, int size_buf);
   int hostname_to_ip(const char* host_name, char* ip);
 
