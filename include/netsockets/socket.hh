@@ -29,71 +29,75 @@
 #include <time.h>
 #include <ctime>
 
-//multi platform socket descriptor
+namespace netsockets {
+
+	//multi platform socket descriptor
 #if _WIN32
-typedef SOCKET socketfd_t;
+	typedef SOCKET socketfd_t;
 #else
-typedef int socketfd_t;
+	typedef int socketfd_t;
 #endif
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-//utils
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	//utils
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-std::string str_extract(const std::string& str_in);
-std::string prt_time();
-int set_daemon(const char* str_dir);
-void wait(int nbr_secs);
+	std::string str_extract(const std::string& str_in);
+	std::string prt_time();
+	int set_daemon(const char* str_dir);
+	void wait(int nbr_secs);
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-//socket_t
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	//socket_t
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class socket_t
-{
-public:
-  socket_t();
-  socket_t(socketfd_t sockfd, sockaddr_in sock_addr);
-  void close();
-  int write_all(const void* buf, int size_buf);
-  int write_all(const std::string& str);
-  int read_all(void* buf, int size_buf);
-  int hostname_to_ip(const char* host_name, char* ip);
+	class socket_t
+	{
+	public:
+		socket_t();
+		socket_t(socketfd_t sockfd, sockaddr_in sock_addr);
+		void close();
+		int write_all(const void* buf, int size_buf);
+		int write_all(const std::string& str);
+		int read_all(void* buf, int size_buf);
+		int hostname_to_ip(const char* host_name, char* ip);
 
-public:
-  socketfd_t m_sockfd; //socket descriptor 
-  sockaddr_in m_sockaddr_in; //client address (used to store return value of server accept())
-};
+	public:
+		socketfd_t m_sockfd; //socket descriptor 
+		sockaddr_in m_sockaddr_in; //client address (used to store return value of server accept())
+	};
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-//tcp_server_t
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	//tcp_server_t
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class tcp_server_t : public socket_t
-{
-public:
-  tcp_server_t(const unsigned short server_port);
-  socket_t accept();
-  ~tcp_server_t();
-};
+	class tcp_server_t : public socket_t
+	{
+	public:
+		tcp_server_t(const unsigned short server_port);
+		socket_t accept();
+		~tcp_server_t();
+	};
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-//tcp_client_t
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	//tcp_client_t
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class tcp_client_t : public socket_t
-{
-public:
-  tcp_client_t();
-  ~tcp_client_t();
-  int connect();
+	class tcp_client_t : public socket_t
+	{
+	public:
+		tcp_client_t();
+		~tcp_client_t();
+		int connect();
 
-  tcp_client_t(const char* host_name, const unsigned short server_port);
-  int connect(const char* host_name, const unsigned short server_port);
+		tcp_client_t(const char* host_name, const unsigned short server_port);
+		int connect(const char* host_name, const unsigned short server_port);
 
-protected:
-  std::string m_server_ip;
-  unsigned short m_server_port;
-};
+	protected:
+		std::string m_server_ip;
+		unsigned short m_server_port;
+	};
+
+} // namespace netsockets
 
 #endif
