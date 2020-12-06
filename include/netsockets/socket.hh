@@ -29,6 +29,15 @@
 #include <time.h>
 #include <ctime>
 
+#if defined (_MSC_VER)
+#ifndef _CRT_SECURE_NO_WARNINGS
+
+#define LIB_CRT_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+
+#endif
+#endif
+
 namespace netsockets {
 
 	static const int MAXPENDING = 5; // maximum outstanding connection requests
@@ -450,5 +459,9 @@ namespace netsockets {
 	};
 
 } // namespace netsockets
+
+#ifdef(LIB_CRT_NO_WARNINGS)
+#undef _CRT_SECURE_NO_WARNINGS
+#endif
 
 #endif
