@@ -264,7 +264,7 @@ namespace netsockets {
 
 } // namespace netsockets
 
-#ifdef(LIB_CRT_NO_WARNINGS)
+#ifdef LIB_CRT_NO_WARNINGS
 #undef _CRT_SECURE_NO_WARNINGS
 #endif
 
