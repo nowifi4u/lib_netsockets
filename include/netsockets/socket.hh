@@ -2,6 +2,15 @@
 #define LIB_SOCKET_H
 
 #if defined (_MSC_VER)
+#ifndef _CRT_SECURE_NO_WARNINGS
+
+#define LIB_SOCKET_CRT_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+
+#endif
+#endif
+
+#if defined (_MSC_VER)
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #else
@@ -28,15 +37,6 @@
 #include <assert.h>
 #include <time.h>
 #include <ctime>
-
-#if defined (_MSC_VER)
-#ifndef _CRT_SECURE_NO_WARNINGS
-
-#define LIB_CRT_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
-
-#endif
-#endif
 
 namespace netsockets {
 
@@ -460,7 +460,7 @@ namespace netsockets {
 
 } // namespace netsockets
 
-#ifdef LIB_CRT_NO_WARNINGS
+#ifdef LIB_SOCKET_CRT_NO_WARNINGS
 #undef _CRT_SECURE_NO_WARNINGS
 #endif
 
