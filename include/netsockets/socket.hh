@@ -136,7 +136,7 @@ namespace netsockets {
 			memset(&m_sockaddr_in, 0, sizeof(m_sockaddr_in));
 		}
 
-		socket_t::socket_t(socketfd_t sockfd, sockaddr_in sock_addr) :
+		socket_t(socketfd_t sockfd, sockaddr_in sock_addr) :
 			m_sockfd(sockfd),
 			m_sockaddr_in(sock_addr)
 		{
