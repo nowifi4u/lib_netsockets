@@ -1,15 +1,5 @@
 #ifndef LIB_NETSOCKET_HTTP_H
 #define LIB_NETSOCKET_HTTP_H
-
-#if defined (_MSC_VER)
-#ifndef _CRT_SECURE_NO_WARNINGS
-
-#define LIB_HTTP_CRT_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
-
-#endif
-#endif
-
 #include <string>
 #include <netsockets/socket.hh>
 
@@ -263,9 +253,5 @@ namespace netsockets {
 
 
 } // namespace netsockets
-
-#ifdef LIB_HTTP_CRT_NO_WARNINGS
-#undef _CRT_SECURE_NO_WARNINGS
-#endif
 
 #endif

@@ -1,15 +1,5 @@
 #ifndef LIB_NETSOCKET_FTP_H
 #define LIB_NETSOCKET_FTP_H
-
-#if defined (_MSC_VER)
-#ifndef _CRT_SECURE_NO_WARNINGS
-
-#define LIB_FTP_CRT_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
-
-#endif
-#endif
-
 #include <string>
 #include <vector>
 #include <netsockets/socket.hh>
@@ -414,10 +404,6 @@ namespace netsockets {
 
 
 } // namespace netsockets
-
-#ifdef LIB_FTP_CRT_NO_WARNINGS
-#undef _CRT_SECURE_NO_WARNINGS
-#endif
 
 #endif
 
